@@ -1,0 +1,16 @@
+services:
+  minitube:
+    build: .
+    container_name: minitube
+    ports:
+      - "5000:5000"
+    environment:
+      SECRET_KEY: "replace-this-with-a-long-random-secret-before-deployment"
+      MINITUBE_DATA: "/app/data"
+      MAX_UPLOAD_MB: "500"
+    volumes:
+      - minitube_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  minitube_data:
